@@ -1,0 +1,18 @@
+.buddies-container {
+  display: flex;
+  margin: 14px;
+  justify-content: center;
+}
+
+.buddy-card {
+  border: 1px solid gray;
+  padding: 14px;
+  border-radius: 7px;
+  width: 200px;
+  text-align: center;
+}
+
+.buddy-card img {
+  max-width: 100%;
+  border-radius: 50%;
+}
