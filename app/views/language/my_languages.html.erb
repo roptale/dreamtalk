@@ -1,21 +1,5 @@
 <h1>My Languages</h1>
 
-<b>Spoken Languages</b>
-<ul>
-  <% @spoken_languages.each do |language| %>
-    <li>??<%= language.id %></li>
-    <li>??<%= language.language_id %></li>
-    <li><%= language.language_name %></li>
-  <% end %>
-</ul>
-<b>Wanted Languages?</b>
-<ul>
-  <% @wanted_languages.each do |language| %>
-    <li>??<%= language.id %></li>
-    <li><%= language.language_name %></li>
-  <% end %>
-</ul>
-
 <%= form_with url: update_languages_path, method: :post do |form| %>
   <div>
     <h2>Spoken Languages</h2>
