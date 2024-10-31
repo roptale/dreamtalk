@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :users
+
+  get "my_languages", to: "language#my_languages"
+  post "update_languages", to: "language#update_languages"
 end
