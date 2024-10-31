@@ -1,0 +1,35 @@
+<h1>My Languages</h1>
+
+<b>Spoken Languages</b>
+<ul>
+  <% @spoken_languages.each do |language| %>
+    <li>??<%= language.id %></li>
+    <li>??<%= language.language_id %></li>
+    <li><%= language.language_name %></li>
+  <% end %>
+</ul>
+<b>Wanted Languages?</b>
+<ul>
+  <% @wanted_languages.each do |language| %>
+    <li>??<%= language.id %></li>
+    <li><%= language.language_name %></li>
+  <% end %>
+</ul>
+
+<%= form_with url: update_languages_path, method: :post do |form| %>
+  <div>
+    <h2>Spoken Languages</h2>
+    <%= form.select :spoken_languages, options_for_select([['None', '']] + @available_languages, @spoken_languages.first&.language_id || ""), {}, { multiple: false, name: 'spoken_languages[]' } %>
+    <%= form.select :spoken_languages, options_for_select([['None', '']] + @available_languages, @spoken_languages.second&.language_id || ""), {}, { multiple: false, name: 'spoken_languages[]' } %>
+  </div>
+
+  <div>
+    <h2>Wanted Languages</h2>
+    <%= form.select :wanted_languages, options_for_select([['None', '']] + @available_languages, @wanted_languages.first&.language_id || ""), {}, { multiple: false, name: 'wanted_languages[]' } %>
+    <%= form.select :wanted_languages, options_for_select([['None', '']] + @available_languages, @wanted_languages.second&.language_id || ""), {}, { multiple: false, name: 'wanted_languages[]' } %>
+  </div>
+
+  <div>
+    <%= form.submit 'Update Languages' %>
+  </div>
+<% end %>
