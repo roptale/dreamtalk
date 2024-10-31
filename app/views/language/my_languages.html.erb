@@ -1,19 +1,21 @@
-<h1>My Languages</h1>
+<div class="container my-5">
+  <h1>My Languages</h1>
 
-<%= form_with url: update_languages_path, method: :post do |form| %>
-  <div>
-    <h2>Spoken Languages</h2>
-    <%= form.select :spoken_languages, options_for_select([['None', '']] + @available_languages, @spoken_languages.first&.language_id || ""), {}, { multiple: false, name: 'spoken_languages[]' } %>
-    <%= form.select :spoken_languages, options_for_select([['None', '']] + @available_languages, @spoken_languages.second&.language_id || ""), {}, { multiple: false, name: 'spoken_languages[]' } %>
-  </div>
+  <%= form_with url: update_languages_path, method: :post do |form| %>
+    <div class="py-3">
+      <h2>Spoken Languages</h2>
+      <%= form.select :spoken_languages, options_for_select([['None', '']] + @available_languages, @spoken_languages.first&.language_id || ""), {}, { multiple: false, name: 'spoken_languages[]' } %>
+      <%= form.select :spoken_languages, options_for_select([['None', '']] + @available_languages, @spoken_languages.second&.language_id || ""), {}, { multiple: false, name: 'spoken_languages[]' } %>
+    </div>
 
-  <div>
-    <h2>Wanted Languages</h2>
-    <%= form.select :wanted_languages, options_for_select([['None', '']] + @available_languages, @wanted_languages.first&.language_id || ""), {}, { multiple: false, name: 'wanted_languages[]' } %>
-    <%= form.select :wanted_languages, options_for_select([['None', '']] + @available_languages, @wanted_languages.second&.language_id || ""), {}, { multiple: false, name: 'wanted_languages[]' } %>
-  </div>
+    <div class="py-3">
+      <h2>Wanted Languages</h2>
+      <%= form.select :wanted_languages, options_for_select([['None', '']] + @available_languages, @wanted_languages.first&.language_id || ""), {}, { multiple: false, name: 'wanted_languages[]' } %>
+      <%= form.select :wanted_languages, options_for_select([['None', '']] + @available_languages, @wanted_languages.second&.language_id || ""), {}, { multiple: false, name: 'wanted_languages[]' } %>
+    </div>
 
-  <div>
-    <%= form.submit 'Update Languages' %>
-  </div>
-<% end %>
+    <div>
+      <%= form.submit 'Update Languages', class: "btn btn-success my-1" %>
+    </div>
+  <% end %>
+</div>
