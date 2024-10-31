@@ -4,9 +4,9 @@
   <div class="buddies-container">
     <% @users.each do |user| %>
       <div class="buddy-card">
-        <% image  %>
+
         <h2><%= user.first_name %></h2>
-        <p>Language: <%= user.language %> want to learn <%= user.spoken %></p>
+
       </div>
     <% end %>
 
