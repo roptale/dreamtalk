@@ -4,12 +4,22 @@
   <div class="buddies-container">
     <% @users.each do |user| %>
       <div class="buddy-card">
-
         <h2><%= user.first_name %></h2>
+        <p>Location: <%= user.city %></p>
+        <% spoken_languages = user.user_languages.select { |ul| ul.spoken }.map { |ul| ul.language.name } %>
+        <% wanted_languages = user.user_languages.select { |ul| ul.wanted }.map { |ul| ul.language.name } %>
+
+        <p>Speak: <%= spoken_languages.join(', ') %></p>
+        <p>Want to learn: <%= wanted_languages.join(', ') %></p>
+
+        <!--
+        <span class="follow-star" tabindex="0" role="button" data-user-id="<%= user.id %>">
+          ★
+        </span>
+        -->
 
       </div>
     <% end %>
-
   </div>
 
 </div>
