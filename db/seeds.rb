@@ -36,7 +36,8 @@ UserLanguage.create(user: roseline, language: german, spoken: true, wanted: true
 UserLanguage.create(user: lise, language: german, spoken: true, wanted: true)
 UserLanguage.create(user: lise, language: french, spoken: true, wanted: false)
 
-
-# chatroom = Chatroom.create(creator: varsik, receiver: roseline)
-# Message.create(chatroom: chatroom, user: varsik, content: "Hello!")
-# Message.create(chatroom: chatroom, user: roseline, content: "Hi")
+puts "Creating chat room..."
+chatroom = Chatroom.create(creator: varsik, receiver: roseline)
+Message.create(chatroom: chatroom, user: varsik, content: "Hello!")
+Message.create(chatroom: chatroom, user: roseline, content: "Hi")
+Message.create(chatroom: chatroom, user: lise, content: "How are you?")
