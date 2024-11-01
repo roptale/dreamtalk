@@ -1,7 +1,32 @@
 <div class="container my-5">
-  <h1>My Languages</h1>
+  <h1>My Profile</h1>
 
   <%= form_with url: update_languages_path, method: :post do |form| %>
+
+    <%= form.label "Name" %>
+    <%= form.text_field :first_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "first_name" },
+                  value: current_user.first_name
+                  %>
+     <%= form.label "Age" %>
+    <%= form.text_field :age,
+                  required: true,
+                  input_html: { autocomplete: "age" },
+                  value: current_user.age
+                  %>
+    <%= form.label "City" %>
+    <%= form.text_field :city,
+                  required: true,
+                  input_html: { autocomplete: "city" },
+                  value: current_user.city
+                  %>
+<%= form.label "Description" %>
+    <%= form.text_area :description,
+                  input_html: { autocomplete: "description" },
+                  value: current_user.description
+                  %>
     <div class="py-3">
       <h2>Spoken Languages</h2>
       <%= form.select :spoken_languages, options_for_select([['None', '']] + @available_languages, @spoken_languages.first&.language_id || ""), {}, { multiple: false, name: 'spoken_languages[]' } %>
