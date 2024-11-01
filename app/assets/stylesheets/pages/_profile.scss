@@ -1,0 +1,21 @@
+.profile-container {
+  section {
+    padding: 10px 0;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  label {
+    width: 100px;
+    display: inline-flex;
+  }
+
+  textarea {
+    display: block;
+    width: 100%;
+    resize: none;
+  }
+}
