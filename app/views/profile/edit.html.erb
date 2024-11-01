@@ -1,7 +1,7 @@
 <div class="profile-container container my-5">
   <h1>My Profile</h1>
 
-  <%= form_with url: update_languages_path, method: :post do |form| %>
+  <%= form_with url: update_profile_path, method: :post do |form| %>
     <section>
       <h2>My Info</h2>
 
@@ -56,7 +56,7 @@
     </section>
 
     <div>
-      <%= form.submit 'Update Languages', class: "btn btn-success my-1" %>
+      <%= form.submit 'Update Profile', class: "btn btn-success my-1" %>
     </div>
   <% end %>
 </div>

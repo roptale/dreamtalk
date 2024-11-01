@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users
 
-  get "my_languages", to: "language#my_languages"
-  post "update_languages", to: "language#update_languages"
+  get "profile", to: "profile#edit"
+  post "update_profile", to: "profile#update"
 end

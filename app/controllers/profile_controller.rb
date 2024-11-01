@@ -1,11 +1,11 @@
-class LanguageController < ApplicationController
-  def my_languages
+class ProfileController < ApplicationController
+  def edit
     @available_languages = Language.all.map { |language| [language.name, language.id] }
     @spoken_languages = current_user.user_languages.where(spoken: true)
     @wanted_languages = current_user.user_languages.where(wanted: true)
   end
 
-  def update_languages
+  def update
     first_name = params[:first_name]
     age = params[:age]
     city = params[:city]
