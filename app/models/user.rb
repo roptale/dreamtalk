@@ -4,6 +4,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   acts_as_favoritable #LW: utilisation de la gem pour marquer un user en favori (systeme de follow)
+  acts_as_favoritor
+
+  def favorited?(user)
+    favorites.where(favoritable: user).exists?
+  end
+
+  def toggle_favorite(user)
+    if favorited?(user)
+      unfavorite(user)
+    else
+      favorite(user)
+    end
+  end
 
   has_many :user_languages
   has_many :languages, through: :user_languages

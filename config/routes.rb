@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :users
+  resources :users do
+    post 'toggle_favorite', on: :member
+  end
 
   get "my_languages", to: "language#my_languages"
   post "update_languages", to: "language#update_languages"

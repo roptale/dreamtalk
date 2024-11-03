@@ -30,18 +30,18 @@
     font-size: 1em;
   }
 
-  .follow-star {
+  .favorite-star {
     font-size: 20px;
     color: #d3d3d3;
     cursor: pointer;
     transition: color 0.3s;
 
     &:hover {
-      color: #ffa500; /* Orange color on hover */
+      color: #ffa500;
     }
 
     &.active {
-      color: #ffd700; /* Gold color when followed */
+      color: #ffd700;
     }
   }
 }
