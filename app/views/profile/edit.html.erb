@@ -1,0 +1,62 @@
+<div class="profile-container container my-5">
+  <h1>My Profile</h1>
+
+  <%= form_with url: update_profile_path, method: :post do |form| %>
+    <section>
+      <h2>My Info</h2>
+
+      <div class="py-1">
+        <%= form.label "First Name", class: "h6" %>
+        <%= form.text_field :first_name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "first_name" },
+                    value: current_user.first_name
+                    %>
+      </div>
+      <div class="py-1">
+        <%= form.label "Age", class: "h6" %>
+        <%= form.text_field :age,
+                    required: true,
+                    input_html: { autocomplete: "age" },
+                    value: current_user.age
+                    %>
+      </div>
+      <div class="py-1">
+        <%= form.label "City", class: "h6" %>
+        <%= form.text_field :city,
+                    required: true,
+                    input_html: { autocomplete: "city" },
+                    value: current_user.city
+                    %>
+      </div>
+      <div class="py-1">
+        <%= form.label "Description", class: "h6" %>
+        <%= form.text_area :description,
+                    input_html: { autocomplete: "description" },
+                    value: current_user.description
+                    %>
+      </div>
+    </section>
+
+    <section>
+      <h2>My Languages</h2>
+
+      <div class="py-3">
+        <h6>Spoken Languages</h6>
+        <%= form.select :spoken_languages, options_for_select([['None', '']] + @available_languages, @spoken_languages.first&.language_id || ""), {}, { multiple: false, name: 'spoken_languages[]' } %>
+        <%= form.select :spoken_languages, options_for_select([['None', '']] + @available_languages, @spoken_languages.second&.language_id || ""), {}, { multiple: false, name: 'spoken_languages[]' } %>
+      </div>
+
+      <div class="py-3">
+        <h6>Wanted Languages</h6>
+        <%= form.select :wanted_languages, options_for_select([['None', '']] + @available_languages, @wanted_languages.first&.language_id || ""), {}, { multiple: false, name: 'wanted_languages[]' } %>
+        <%= form.select :wanted_languages, options_for_select([['None', '']] + @available_languages, @wanted_languages.second&.language_id || ""), {}, { multiple: false, name: 'wanted_languages[]' } %>
+      </div>
+    </section>
+
+    <div>
+      <%= form.submit 'Update Profile', class: "btn btn-success my-1" %>
+    </div>
+  <% end %>
+</div>
