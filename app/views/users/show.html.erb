@@ -1,0 +1,68 @@
+
+<div class="view-user-page">
+<div class="view-user-top-bar"></div>
+
+<div class="view-user-header">
+  <div class="avatar"></div>
+  <h1 class="m-0"><%= @user.first_name %></h1>
+</div>
+
+<div class="container">
+  <h2>Info</h2>
+
+  <p class="card-text"><strong>Age:</strong> <%= @user.age %></p>
+  <p class="card-text"><strong>City:</strong> <%= @user.city %></p>
+  <p class="card-text">
+  <% if @user.description.nil? || @user.description.empty? %>
+    No description yet
+  <% else %>
+    <%= @user.description %>
+  <% end %>
+  </p>
+
+  <h2>Spoken Languages</h2>
+  <ul>
+    <% @user.user_languages.select { |ul| ul.spoken }.each do |ul| %>
+      <li><%= ul.language.name %></li>
+    <% end %>
+  </ul>
+
+  <h2>Wanted Languages</h2>
+  <ul>
+    <% @user.user_languages.select { |ul| ul.wanted }.each do |ul| %>
+      <li><%= ul.language.name %></li>
+    <% end %>
+  </ul>
+</div>
+</div>
+
+<style>
+.view-user-page {
+  h2 {
+    margin-top: 32px;
+    font-size: 18px;
+  }
+
+  .view-user-top-bar {
+    height: 128px;
+    background-color: #ddd;
+  }
+
+  .view-user-header {
+    position: relative;
+    top: -24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+
+    .avatar {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      background-color: #AAA;
+    }
+  }
+}
+
+</style>

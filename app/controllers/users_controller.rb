@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-
   def toggle_favorite
     @user = User.find(params[:id])
     Rails.logger.debug "Current favorite status for user #{@user.id}: #{current_user.favorited?(@user)}"
