@@ -3,7 +3,7 @@
 
 <div class="buddies-container">
   <% @users.each do |user| %>
-    <div class="buddy-card">
+    <div class="buddy-card" onclick="redirectToUserProfile(<%= user.id %>)">
       <h2><%= user.first_name %></h2>
       <p>Location: <%= user.city %></p>
       <% spoken_languages = user.user_languages.select { |ul| ul.spoken }.map { |ul| ul.language.name } %>
@@ -22,3 +22,9 @@
 
 
 </div>
+
+<script>
+  function redirectToUserProfile(userId) {
+    window.location.href = `/users/${userId}`;
+  }
+</script>
