@@ -1,4 +1,6 @@
 class ProfileController < ApplicationController
+  skip_before_action :check_onboarded
+
   def edit
     @available_languages = Language.all.map { |language| [language.name, language.id] }
     @spoken_languages = current_user.user_languages.where(spoken: true)
@@ -17,7 +19,7 @@ class ProfileController < ApplicationController
     puts "wanted_languages: #{wanted_languages}"
 
     if spoken_languages.empty? || wanted_languages.empty?
-      redirect_to my_languages_path, alert: 'You must select at least one spoken and one wanted language.'
+      redirect_to profile_path, alert: 'You must select at least one spoken and one wanted language.'
       return
     end
 
@@ -38,6 +40,6 @@ class ProfileController < ApplicationController
       current_user.user_languages.create(language_id: language_id, wanted: true)
     end
 
-    redirect_to my_languages_path, notice: 'Profile updated successfully.'
+    redirect_to profile_path, notice: 'Profile updated successfully.'
   end
 end
