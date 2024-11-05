@@ -38,4 +38,10 @@ class User < ApplicationRecord
 
     return true
   end
+
+  def upload_profile_picture(file)
+    result = Cloudinary::Uploader.upload(file)
+    self.profile_picture = result['url']
+    save
+  end
 end

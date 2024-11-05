@@ -40,6 +40,10 @@ class ProfileController < ApplicationController
       current_user.user_languages.create(language_id: language_id, wanted: true)
     end
 
+    if params[:profile_picture].present?
+      current_user.upload_profile_picture(params[:profile_picture])
+    end
+
     redirect_to profile_path, notice: 'Profile updated successfully.'
   end
 end

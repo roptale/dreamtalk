@@ -37,6 +37,10 @@
                     value: current_user.description
                     %>
       </div>
+      <div class="py-1">
+        <%= form.label "Profile Picture", class: "h6" %>
+        <%= form.file_field :profile_picture %>
+      </div>
     </section>
 
     <section>
