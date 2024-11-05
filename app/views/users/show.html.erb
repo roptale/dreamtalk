@@ -3,7 +3,11 @@
 <div class="view-user-top-bar"></div>
 
 <div class="view-user-header">
-  <div class="avatar"></div>
+  <div class="avatar">
+    <% if @user.profile_picture %>
+      <%= image_tag @user.profile_picture, alt: "Profile Picture" %>
+    <% end %>
+  </div>
   <h1 class="m-0"><%= @user.first_name %></h1>
 </div>
 
@@ -44,7 +48,7 @@
   }
 
   .view-user-top-bar {
-    height: 128px;
+    height: 160px;
     background-color: #ddd;
   }
 
@@ -57,10 +61,17 @@
     padding: 0 16px;
 
     .avatar {
-      width: 128px;
-      height: 128px;
+      width: 192px;
+      height: 192px;
       border-radius: 50%;
       background-color: #AAA;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
     }
   }
 }

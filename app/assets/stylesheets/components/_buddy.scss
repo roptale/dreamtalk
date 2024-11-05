@@ -7,6 +7,11 @@
 }
 
 .buddy-card {
+  display: flex;
+  // flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -46,7 +51,9 @@
   }
 }
 
-.buddy-card img {
-  max-width: 100%;
+.buddy-card .avatar {
+  width: 192px;
+  height: 192px;
   border-radius: 50%;
+  background-color: #ddd;
 }
