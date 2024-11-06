@@ -14,5 +14,10 @@
 <%= render "shared/flashes" %>
 
     <%= yield %>
+
+    <script>
+      window.currentUserFirstName = "<%= current_user ? j(current_user.first_name) : '' %>";
+    </script>
+
   </body>
 </html>
