@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   stars.forEach(star => {
     star.addEventListener('click', (event) => {
       event.preventDefault();
-      event.stopPropagation(); // Ajoute cette ligne pour arrêter la propagation
-
+      event.stopPropagation();
       const userId = star.dataset.userId;
 
       console.log(`Clicked on user ID: ${userId}`);
