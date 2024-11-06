@@ -20,6 +20,10 @@
           <li class="nav-item">
             <%= link_to chatrooms_path, class: "nav-link" do %> <i class="fa-solid fa-comments"></i> Messages <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to favorites_profiles_path, class: 'nav-link' do %> <i class="fa fa-star"></i> Favorite <% end %>
+          </li>
+          </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag current_user.profile_picture, alt: "Profile Picture" %>
