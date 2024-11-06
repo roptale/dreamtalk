@@ -7,6 +7,10 @@ class ProfileController < ApplicationController
     @wanted_languages = current_user.user_languages.where(wanted: true)
   end
 
+  def index
+    @favorites = current_user.favorited_users
+  end
+
   def update
     first_name = params[:first_name]
     age = params[:age]

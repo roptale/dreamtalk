@@ -23,4 +23,5 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
+  get 'favorites_profiles', to: 'profile#index', as: 'favorites_profiles'
 end

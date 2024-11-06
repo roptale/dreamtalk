@@ -27,4 +27,8 @@ class UsersController < ApplicationController
       format.json { render json: { status: status } }
     end
   end
+
+  def favorites
+    @favorites = current_user.favorited_users
+  end
 end

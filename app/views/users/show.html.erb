@@ -37,6 +37,9 @@
       <li><%= ul.language.name %></li>
     <% end %>
   </ul>
+          <%= link_to '#', class: "favorite-star #{'active' if current_user.favorited?(@user)}", data: { user_id: @user.id } do %>
+          <i class="fa fa-star"></i>
+        <% end %>
 </div>
 </div>
 
