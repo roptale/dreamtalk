@@ -3,7 +3,7 @@
 
 <div class="buddies-container">
   <% @users.each do |user| %>
-    <div class="buddy-card">
+    <div class="buddy-card" onclick="redirectToUserProfile(<%= user.id %>)">
       <div class="buddy-card-info">
         <h2><%= user.first_name %></h2>
         <p>Location: <%= user.city %></p>
@@ -13,10 +13,7 @@
         <p>Speak: <%= spoken_languages.join(', ') %></p>
         <p>Want to learn: <%= wanted_languages.join(', ') %></p>
 
-        <button class="btn view-button" onclick="redirectToUserProfile(<%= user.id %>)">View</button>
-
-        <%= link_to '#', class: "favorite-star #{'active' if current_user.favorited?(user)}", data: { user_id: user.id } do %>
-          <i class="fa fa-star"></i>
+        <%= link_to '#', class: "favorite-star #{'active' if current_user.favorited?(user)}", data: { user_id: user.id, turbolinks: false, controller: "favorite", action: "click->favorite#favoris", favorite_user_id_value: user.id } do %> <i class="fa fa-star"></i>
         <% end %>
       </div>
       <div class="avatar">
