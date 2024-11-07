@@ -15,7 +15,7 @@
             <%= link_to root_path, class: "nav-link" do %> <i class="fa fa-home"></i> Home <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to profile_path, class: "nav-link" do %> <i class="fa-solid fa-user"></i> My Profile <% end %>
+            <%= link_to user_path(current_user.id), class: "nav-link" do %> <i class="fa-solid fa-user"></i> My Profile <% end %>
           </li>
           <li class="nav-item">
             <%= link_to chatrooms_path, class: "nav-link" do %> <i class="fa-solid fa-comments"></i> Messages <% end %>
