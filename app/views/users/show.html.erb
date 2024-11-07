@@ -39,6 +39,11 @@
     <% if @user == current_user %>
       <%= link_to "Edit Profile", profile_path, class: "btn btn-primary" %>
     <% end %>
+
+    <% if @user != current_user %>
+      <%= button_to "Chat with #{ @user.first_name }", find_or_create_chatroom_user_path(@user), method: :post, class: "btn btn-secondary" %>
+    <% end %>
+
   </div>
 </div>
 

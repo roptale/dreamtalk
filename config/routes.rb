@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users do
     post 'toggle_favorite', on: :member
+    post 'find_or_create_chatroom', on: :member
   end
 
   get "profile", to: "profile#edit"
