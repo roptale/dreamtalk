@@ -23,5 +23,6 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
+  post '/token', to: 'chatrooms#token'
   get 'favorites_profiles', to: 'profile#index', as: 'favorites_profiles'
 end
