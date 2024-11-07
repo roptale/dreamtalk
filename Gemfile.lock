@@ -108,6 +108,11 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    cloudinary (2.2.0)
+      faraday (>= 2.0.1, < 3.0.0)
+      faraday-follow_redirects (~> 0.3.0)
+      faraday-multipart (~> 1.0, >= 1.0.4)
+      ostruct
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -133,6 +138,13 @@ GEM
       faraday-net_http (>= 2.0, < 3.4)
       json
       logger
+<<<<<<< HEAD
+=======
+    faraday-follow_redirects (0.3.0)
+      faraday (>= 1, < 3)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+>>>>>>> main
     faraday-net_http (3.3.0)
       net-http
     ffi (1.17.0)
@@ -156,8 +168,11 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.7.6)
+<<<<<<< HEAD
     jwt (2.9.3)
       base64
+=======
+>>>>>>> main
     logger (1.6.1)
     loofah (2.23.1)
       crass (~> 1.0.2)
@@ -172,6 +187,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.1)
     msgpack (1.7.3)
+    multipart-post (2.4.1)
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
@@ -192,6 +208,7 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    ostruct (0.6.0)
     pg (1.5.9)
     popper_js (2.11.8)
     psych (5.1.2)
@@ -312,6 +329,7 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 5.2)
   capybara
+  cloudinary
   debug
   devise
   dotenv-rails

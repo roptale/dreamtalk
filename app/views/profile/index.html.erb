@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div class="buddies-container">
+    <% @favorites.each do |user| %>
+      <div class="buddy-card" onclick="redirectToUserProfile(<%= user.id %>)">
+        <div class="buddy-card-info">
+          <h2><%= user.first_name %></h2>
+          <p>Location: <%= user.city %></p>
+          <% spoken_languages = user.user_languages.select { |ul| ul.spoken }.map { |ul| ul.language.name } %>
+          <% wanted_languages = user.user_languages.select { |ul| ul.wanted }.map { |ul| ul.language.name } %>
+          <p>Speak: <%= spoken_languages.join(', ') %></p>
+          <p>Want to learn: <%= wanted_languages.join(', ') %></p>
+        </div>
+        <div class="avatar">
+          <% if user.profile_picture %>
+            <%= image_tag user.profile_picture, alt: "Profile Picture" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function redirectToUserProfile(userId) {
+    window.location.href = `/users/${userId}`;
+  }
+</script>

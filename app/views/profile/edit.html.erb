@@ -1,5 +1,5 @@
 <div class="profile-container container my-5">
-  <h1>My Profile</h1>
+  <h1>Edit Profile</h1>
 
   <%= form_with url: update_profile_path, method: :post do |form| %>
     <section>
@@ -36,6 +36,10 @@
                     input_html: { autocomplete: "description" },
                     value: current_user.description
                     %>
+      </div>
+      <div class="py-1">
+        <%= form.label "Profile Picture", class: "h6" %>
+        <%= form.file_field :profile_picture %>
       </div>
     </section>
 
