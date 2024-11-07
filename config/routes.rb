@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   end
 
   post '/token', to: 'chatrooms#token'
+  get 'favorites_profiles', to: 'profile#index', as: 'favorites_profiles'
 end

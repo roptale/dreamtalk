@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    @users = @users.select { |user| user.onboarded? }
   end
 
   def show
     @user = User.find(params[:id])
   end
-
 
   def toggle_favorite
     @user = User.find(params[:id])
@@ -26,5 +26,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.json { render json: { status: status } }
     end
+  end
+
+  def favorites
+    @favorites = current_user.favorited_users
   end
 end
