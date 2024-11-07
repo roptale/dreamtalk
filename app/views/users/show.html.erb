@@ -1,7 +1,5 @@
 
 <div class="view-user-page">
-  <div class="view-user-top-bar"></div>
-
   <div class="view-user-header">
     <div class="avatar">
       <% if @user.profile_picture %>
@@ -51,18 +49,11 @@
     font-size: 18px;
   }
 
-  .view-user-top-bar {
-    height: 160px;
-    background-color: #ddd;
-  }
-
   .view-user-header {
-    position: relative;
-    top: -24px;
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 0 16px;
+    padding: 32px 16px;
 
     .avatar {
       width: 192px;
