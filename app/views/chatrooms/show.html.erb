@@ -6,7 +6,9 @@
   <!-- Messages Section -->
   <div id="messages" class="mb-4 p-3 border rounded bg-light" style="height: 300px; overflow-y: scroll;">
     <% @chatroom.messages.each do |message| %>
-      <p><strong><%= message.user.first_name %>:</strong> <%= message.content %></p>
+      <p class="message <%= 'current-user' if message.user == current_user %>">
+        <strong><%= message.user.first_name %>:</strong> <%= message.content %>
+      </p>
     <% end %>
   </div>
 
@@ -33,10 +35,9 @@
         <div id="localVideoTrack"></div>
       </div>
 
-      <!-- remote articipants video -->
+      <!-- remote participants video -->
       <div id="remoteParticipants" class="text-center flex-fill ms-2">
         <h5>Other Participants</h5>
-
       </div>
     </div>
   </div>
