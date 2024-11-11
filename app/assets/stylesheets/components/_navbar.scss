@@ -1,19 +1,53 @@
+/* Barre de navigation */
 .navbar-lewagon {
-  justify-content: space-between;
-  background: bisque;
-  padding: 1px 2px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width:90%;
-  margin: auto;
-  margin-top: 14px;
-  border-radius: 7px;
-  height: 70px;
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+/* Liens de navigation */
+.navbar-lewagon .nav-link {
+  margin-right: 15px;
+  color: #333;
+  font-weight: 500;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-lewagon .nav-link:hover {
+  color: #007bff;
+}
+
+/* Avatar */
+.navbar-lewagon .avatar img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Menu déroulant */
+.navbar-lewagon .dropdown-menu {
+  right: 0; /* Aligne le menu à droite */
+  left: auto; /* Annule le positionnement à gauche par défaut */
+  background-color: #ffffff; /* Fond opaque */
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+}
+
+.navbar-lewagon .dropdown-item {
+  color: #333;
+}
+
+.navbar-lewagon .dropdown-item:hover {
+  background-color: #f1f1f1;
+  color: #007bff;
+}
+
+/* Bouton de navigation pour mobile */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  color: #007bff;
 }
