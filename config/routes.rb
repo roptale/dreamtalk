@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     post 'find_or_create_chatroom', on: :member
   end
 
+  get "landing", to: "pages#landing"
   get "profile", to: "profile#edit"
   post "update_profile", to: "profile#update"
 

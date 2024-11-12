@@ -1,3 +1,11 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "profile";
+
+:root {
+  --text: #130810;
+  --background: #fcf7fa;
+  --primary: #b75195;
+  --secondary: #d6c79c;
+  --accent: #b8ca7f;
+}
