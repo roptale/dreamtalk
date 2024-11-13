@@ -3,7 +3,7 @@
     <div class="content">
       <h1>Welcome to DreamTalk: Your Language Learning Journey Begins</h1>
       <p>Discover a world of language exchange where you can connect with people near you and learn together through engaging conversations and video calls</p>
-      <a class="cta href="">Get Started</a>
+      <%= link_to "Get Started", root_path, class: "cta" %>
     </div>
   </section>
 
@@ -11,7 +11,7 @@
     <div class="content">
       <h2>Unlock Your Potential</h2>
       <p>At DreamTalk, we believe that language learning is best achieved through authentic conversations and cultural immersion</p>
-      <a class="cta href="">Join Now</a>
+      <%= link_to "Join Now", root_path, class: "cta" %>
     </div>
     <img src="./images/unlock-bg.png" alt="Unlock your potential">
   </section>
@@ -24,22 +24,41 @@
     <img src="./images/our-mission-bg.png" alt="Our Mission">
   </section>
 
-  <section>
-  section4
-  </section>
+  <section id="users">
+  <div class="content">
+      <h2>Your Language Learning Companions</h2>
+      <p>At DreamTalk, we believe that the best way to learn a language is through authentic, face-to-face interactions.
+      Our app connects you with native speakers in your local community,
+       allowing you to practice your language skills in real-time and gain invaluable cultural insights</p>
+    </div>
 
-  <section>
-  section5
+    <div class="avatar-row">
+      <div class="landing-avatar"></div>
+      <div class="landing-avatar"></div>
+      <div class="landing-avatar"></div>
+      <div class="landing-avatar"></div>
+      <div class="landing-avatar"></div>
+      <div class="landing-avatar"></div>
+      <div class="landing-avatar"></div>
+      <div class="landing-avatar"></div>
+      <div class="landing-avatar"></div>
+      <div class="landing-avatar"></div>
+    </div>
+  </div>
   </section>
 
   <footer>
-  footer
+  <%# FOOTER %>
   </footer>
 </div>
 
 <style>
   .landing-page {
     background-color: var(--background);
+
+    section {
+      padding: 50px;
+    }
 
     a.cta {
       font-family: inherit;
@@ -52,6 +71,7 @@
     }
 
     #hero {
+      padding: 0;
       width: 100%;
       aspect-ratio: 4/3;
       background-image: url('./images/hero-bg.png');
@@ -79,7 +99,6 @@
     }
 
     #unlock {
-      padding: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -101,6 +120,7 @@
       gap: 10px;
 
       .content {
+        text-align: center;
         width: 65%;
       }
 
@@ -108,5 +128,77 @@
         width: 50%;
       }
     }
+
+    #users {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      .content {
+        text-align: center;
+        width: 85%;
+      }
+
+      .avatar-row {
+        width: 85%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        /* animation: loop 3s linear infinite; */
+      }
+
+      .landing-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: var(--accent);
+      }
+    }
+  }
+
+  @keyframes loop {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-1000px);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .landing-page section {
+      padding: 20px;
+
+      .content {
+        width: 100% !important;
+      }
+    }
+
+    #unlock {
+      flex-direction: column;
+      gap: 40px !important;
+      text-align: center;
+
+      .content, img {
+        width: 100%;
+      }
+    }
   }
 </style>
+
+
+<script>
+  const avatars = document.querySelectorAll('.landing-avatar');
+  console.log(avatars);
+
+
+  avatars.forEach((avatar, index) => {
+    const isEven = index % 2 == 0;
+    avatar.style.backgroundImage = `url('https://randomuser.me/api/portraits/${isEven ? "women" : "men"}/${index}.jpg')`;
+    avatar.style.backgroundSize = "cover";
+    avatar.style.backgroundRepeat = "none";
+  });
+</script>
