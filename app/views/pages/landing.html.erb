@@ -177,6 +177,10 @@
       }
     }
 
+    #hero .content {
+      width: 85% !important;
+    }
+
     #unlock {
       flex-direction: column;
       gap: 40px !important;
@@ -192,9 +196,6 @@
 
 <script>
   const avatars = document.querySelectorAll('.landing-avatar');
-  console.log(avatars);
-
-
   avatars.forEach((avatar, index) => {
     const isEven = index % 2 == 0;
     avatar.style.backgroundImage = `url('https://randomuser.me/api/portraits/${isEven ? "women" : "men"}/${index}.jpg')`;
