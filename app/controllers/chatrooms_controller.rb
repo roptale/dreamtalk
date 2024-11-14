@@ -7,6 +7,12 @@ class ChatroomsController < ApplicationController
 
   def show
     @message = Message.new
+
+    @other_user = if @chatroom.creator == current_user
+      @chatroom.receiver
+    else
+      @chatroom.creator
+    end
   end
 
   def new

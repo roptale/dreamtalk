@@ -1,31 +1,155 @@
-#messages {
+// Colors
+$color-text: #130810;
+$color-bg: #fcf7fa;
+$color-primary: #b75195; // Sent message color
+$color-secondary: #d6c79c; // Received message color
+$color-accent: #b8ca7f;
+
+// Chat Container Styling
+.chat-container {
+  color: $color-text;
+  background-color: $color-bg;
+  padding: 1rem;
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
+
+// Chat Title
+.chat-title {
+  color: $color-primary;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+// Message Box
+.message-box {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: $color-bg;
+  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.5rem;
 }
 
-.message {
+// Message Wrapper
+.message-wrapper {
+  display: flex;
+  margin-bottom: 0.5rem;
+
+  &.message-sent {
+    justify-content: flex-end;
+  }
+}
+
+// Message Bubble
+.message-bubble {
   max-width: 70%;
-  padding: 10px 15px;
-  border-radius: 12px;
-  font-size: 14px;
-  line-height: 1.4;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  position: relative;
+  color: $color-text;
+
+  .message-user {
+    display: none; // Hide username for cleaner chat appearance
+  }
+
+  .message-text {
+    display: block;
+  }
+
+  // Sent Message Styling
+  &.message-sent {
+    background-color: $color-primary;
+    color: #fff;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  // Received Message Styling
+  &:not(.message-sent) {
+    background-color: $color-secondary;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
 }
 
-/* Messages du current_user alignés à droite */
-.current-user {
-  background-color: #FF5733; /* Orange pour le current_user */
-  color: #ffffff;
-  align-self: flex-end;
-  border-bottom-right-radius: 0;
-  text-align: right;
+// Message Form
+.message-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .input-group {
+    flex-grow: 1;
+  }
+
+  .message-input {
+    border: 1px solid $color-primary;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .send-button {
+    background-color: $color-primary;
+    color: $color-bg;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+
+    &:hover {
+      background-color: darken($color-primary, 10%);
+    }
+  }
 }
 
-/* Messages du receiver alignés à gauche */
-.message:not(.current-user) {
-  background-color: #68d391; /* Vert/turquoise pour le receiver */
-  color: #ffffff;
-  align-self: flex-start;
-  border-bottom-left-radius: 0;
+// Chat Header Styling
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: $color-bg;
+  border-bottom: 1px solid $color-secondary;
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .user-photo,
+    .profile-picture {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .user-name {
+      font-size: 1rem;
+      color: $color-primary;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .video-call-icon,
+  .call-icon-button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: $color-accent;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: darken($color-accent, 15%);
+    }
+  }
 }

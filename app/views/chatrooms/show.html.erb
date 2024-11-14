@@ -1,47 +1,42 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Chatroom</h2>
+<div class="chat-container mt-5">
 
-  <!-- Messages Section -->
-  <div id="messages" class="mb-4 p-3 border rounded bg-light" style="height: 300px; overflow-y: scroll;">
-    <% @chatroom.messages.each do |message| %>
-      <p class="message <%= 'current-user' if message.user == current_user %>">
-        <strong><%= message.user.first_name %>:</strong> <%= message.content %>
-      </p>
+  <!-- Chat Header with User Info and Video Call Icon -->
+<div class="chat-header d-flex flex-column align-items-center p-2 mb-3">
+  <div class="user-info d-flex flex-column align-items-center">
+    <% if @other_user.profile_picture %>
+      <%= image_tag @other_user.profile_picture, alt: "Profile Picture", class: "profile-picture mb-2" %>
     <% end %>
+    <h5 class="user-name mb-1 text-center"><%= @other_user.first_name %></h5>
+    <a href="/video_call" class="video-call-icon">
+      <i class="fas fa-video"></i>
+    </a>
   </div>
 
-  <!-- new message -->
-  <%= form_with model: [@chatroom, @message], local: true, class: "d-flex align-items-center mb-4" do |form| %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <div class="form-group flex-grow-1 me-2">
-      <%= form.label :content, "New Message", class: "form-label" %>
-      <%= form.text_field :content, class: "form-control", placeholder: "Type your message here..." %>
-    </div>
-    <%= form.submit "Send", class: "btn btn-primary" %>
-  <% end %>
-
-  <!-- video call -->
-  <div id="container" class="border rounded p-3 bg-light">
-    <form id="login" class="mb-3">
-      <input type="hidden" id="username" name='username' value="<%= current_user.first_name %>">
-      <button type="submit" id="joinOrLeaveRoom" class="btn btn-success w-100 mb-10">Join Video Call</button>
-    </form>
-
-    <div id="participantsContainer" class="d-flex justify-content-between">
-      <div id="localParticipant" class="text-center flex-fill me-2">
-        <h5>Your Video</h5>
-        <div id="localVideoTrack"></div>
-      </div>
-
-      <!-- remote participants video -->
-      <div id="remoteParticipants" class="text-center flex-fill ms-2">
-        <h5>Other Participants</h5>
-      </div>
-    </div>
   </div>
 </div>
 
-<script src="https://sdk.twilio.com/js/video/releases/2.14.0/twilio-video.min.js"></script>
-<script src="/application.js"></script>
+  <!-- Messages Section -->
+  <div id="message-box" class="message-box mb-4 p-3 rounded">
+    <% @chatroom.messages.each do |message| %>
+      <div class="message-wrapper <%= 'message-sent' if message.user == current_user %>">
+        <p class="message-bubble">
+          <strong class="message-user"><%= message.user.first_name %>:</strong>
+          <span class="message-text"><%= message.content %></span>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- New Message -->
+  <%= form_with model: [@chatroom, @message], local: true, class: "message-form d-flex align-items-center mb-4" do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <div class="input-group flex-grow-1 me-2">
+      <%= form.label :content, "New Message", class: "sr-only" %>
+      <%= form.text_field :content, class: "message-input form-control", placeholder: "Type your message..." %>
+    </div>
+    <%= form.submit "Send", class: "send-button btn" %>
+  <% end %>
+</div>
