@@ -7,6 +7,12 @@ class ChatroomsController < ApplicationController
 
   def show
     @message = Message.new
+
+    @other_user = if @chatroom.creator == current_user
+      @chatroom.receiver
+    else
+      @chatroom.creator
+    end
   end
 
   def new
@@ -42,5 +48,11 @@ class ChatroomsController < ApplicationController
 
   def chatroom_params
     params.require(:chatroom).permit(:receiver_id)
+  end
+
+  def token
+    username = params[:username]
+    token = generate_twilio_token(username)
+    render json: { token: token }
   end
 end
