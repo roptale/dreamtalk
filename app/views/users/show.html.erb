@@ -1,4 +1,4 @@
-
+<!--
 <div class="view-user-page">
   <div class="view-user-header">
     <div class="avatar">
@@ -28,11 +28,6 @@
     </ul>
 
     <h2>Wanted Languages</h2>
-    <ul>
-      <% @user.user_languages.select { |ul| ul.wanted }.each do |ul| %>
-        <li><%= ul.language.name %></li>
-      <% end %>
-    </ul>
 
     <% if @user == current_user %>
       <%= link_to "Edit Profile", profile_path, class: "btn btn-primary" %>
@@ -75,3 +70,67 @@
 }
 
 </style>
+-->
+<div class="container-show">
+
+  <div class="profil">
+    <% unless current_user == @user %>
+      <div class="icon">
+        <!--
+        <%= link_to root_path do %>
+          <i class="fa-solid fa-chevron-left"></i>
+        <% end %>
+        -->
+        <%= link_to '#', class: "favorite-star #{'active' if @current_user.favorited?(@user)}", data: { user_id: @user.id, turbolinks: false, controller: "favorite", action: "click->favorite#favoris", favorite_user_id_value: @user.id } do %>
+          <i class="fa fa-star"></i>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="avatar">
+      <% if @user.profile_picture %>
+        <%= image_tag @user.profile_picture, alt: "Profile Picture" %>
+      <% end %>
+    </div>
+    <h2><%= @user.first_name %></h2>
+    <p class="card-text">
+        <% if @user.description.nil? || @user.description.empty? %>
+          No description yet
+        <% else %>
+          <%= @user.description %>
+    <% end %>
+    </p>
+
+    <div class="langues">
+      <div class="test">
+        <h5>Spoken</h5>
+            <ul>
+            <% @user.user_languages.select { |ul| ul.spoken }.each do |ul| %>
+              <li><%= ul.language.name %></li>
+            <% end %>
+          </ul>
+      </div>
+      <div class="test">
+        <h5>Wanted</h5>
+          <ul>
+            <% @user.user_languages.select { |ul| ul.wanted }.each do |ul| %>
+              <li><%= ul.language.name %></li>
+            <% end %>
+          </ul>
+      </div>
+      <div class="test">
+        <h5>Location</h5>
+          <ul>
+            <%= @user.city %>
+          </ul>
+      </div>
+    </div>
+    <% if @user == current_user %>
+      <%= link_to "Edit Profile", profile_path, class: "btn-chat btn-primary" %>
+    <% end %>
+
+    <% if @user != current_user %>
+      <%= button_to "Chat with #{ @user.first_name }", find_or_create_chatroom_user_path(@user), method: :post, class: "btn-chat btn-secondary" %>
+    <% end %>
+  </div>
+
+</div>
