@@ -26,6 +26,4 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [:index, :show, :new, :create] do
     resources :messages, only: :create
   end
-
-  get '/video_call', to: 'chatrooms#video_call'
 end

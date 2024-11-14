@@ -49,4 +49,10 @@ class ChatroomsController < ApplicationController
   def chatroom_params
     params.require(:chatroom).permit(:receiver_id)
   end
+
+  def token
+    username = params[:username]
+    token = generate_twilio_token(username)
+    render json: { token: token }
+  end
 end

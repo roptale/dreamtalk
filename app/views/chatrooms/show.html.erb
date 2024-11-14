@@ -3,18 +3,18 @@
 
 <div class="chat-container mt-5">
 
-  <!-- Chat Header with User Info and Video Call Icon -->
-  <div class="chat-header">
-    <div class="user-info">
-      <% if @other_user.profile_picture %>
-        <%= image_tag @other_user.profile_picture, alt: "Profile Picture", class: "profile-picture" %>
-      <% end %>
-      <h5 class="user-name"><%= @other_user.first_name %></h5>
-      <a href="/video_call" class="video-call-icon">
-        <i class="fas fa-video"></i>
-      </a>
-    </div>
+<!-- Chat Header with User Info and Video Call Icon -->
+<div class="chat-header" data-controller="video">
+  <div class="user-info">
+    <% if @other_user.profile_picture %>
+      <%= image_tag @other_user.profile_picture, alt: "Profile Picture", class: "profile-picture" %>
+    <% end %>
+    <h5 class="user-name"><%= @other_user.first_name %></h5>
+    <a href="#" class="video-call-icon" data-action="video#joinOrLeaveRoom">
+      <i class="fas fa-video"></i>
+    </a>
   </div>
+</div>
 
   <!-- Messages Section -->
 
