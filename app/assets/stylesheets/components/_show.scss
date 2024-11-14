@@ -1,0 +1,100 @@
+.container-show {
+  width: 100%;
+  background-color: #d6c79c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .profil {
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+    padding: 30px 10px;
+  }
+
+  h2 {
+    font-size: 22px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .avatar {
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    align-self: center;
+  }
+
+
+  .btn-chat {
+    background-color: #b75195;
+    color: #d6c79c;
+    padding: 10px 40px;
+    border-radius: 30px;
+    border: 1px solid #b75195;
+    text-decoration: none;
+    align-self: center;
+
+    &:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+  }
+
+  .langues {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+
+    .test {
+      align-items: center;
+    }
+
+    h5 {
+      font-weight: 450;
+      font-size: 18px;
+
+    }
+
+  }
+
+  ul {
+    list-style: none;
+    font-size: 16px;
+    padding-left: 0px;
+  }
+}
+
+
+.icon {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  .fa-chevron-left {
+    color: #b75195;
+    text-decoration: none;
+    font-size: 25px;
+  }
+
+  .favorite-star {
+    font-size: 20px;
+    color: grey;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #b75195;
+    }
+
+    &.active {
+      color: #b75195;
+    }
+  }
+}
