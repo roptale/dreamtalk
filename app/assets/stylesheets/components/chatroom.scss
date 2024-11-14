@@ -38,8 +38,14 @@ $color-accent: #b8ca7f;
   display: flex;
   margin-bottom: 0.5rem;
 
+  // Align sent messages to the right
   &.message-sent {
     justify-content: flex-end;
+  }
+
+  // Align received messages to the left
+  &.message-received {
+    justify-content: flex-start;
   }
 }
 
@@ -49,34 +55,27 @@ $color-accent: #b8ca7f;
   padding: 0.75rem 1rem;
   border-radius: 1rem;
   font-size: 0.9rem;
-  position: relative;
   color: $color-text;
-
-  .message-user {
-    display: none; // Hide username for cleaner chat appearance
-  }
-
-  .message-text {
-    display: block;
-  }
+  position: relative;
 
   // Sent Message Styling
   &.message-sent {
-    background-color: $color-primary;
+    background-color: $color-accent;
     color: #fff;
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 1rem;
-    border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 0.25rem;
   }
 
   // Received Message Styling
-  &:not(.message-sent) {
+  &.message-received {
     background-color: $color-secondary;
-    border-bottom-left-radius: 0.25rem;
-    border-bottom-right-radius: 1rem;
+    color: #fff;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 0.25rem;
   }
 }
 
@@ -112,11 +111,11 @@ $color-accent: #b8ca7f;
 // Chat Header Styling
 .chat-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: left;
+  justify-content: center;
   padding: 0.5rem 1rem;
   background-color: $color-bg;
-  border-bottom: 1px solid $color-secondary;
+  // border-bottom: 1px solid $color-secondary;
 
   .user-info {
     display: flex;

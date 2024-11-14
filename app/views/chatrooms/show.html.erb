@@ -4,39 +4,37 @@
 <div class="chat-container mt-5">
 
   <!-- Chat Header with User Info and Video Call Icon -->
-<div class="chat-header d-flex flex-column align-items-center p-2 mb-3">
-  <div class="user-info d-flex flex-column align-items-center">
-    <% if @other_user.profile_picture %>
-      <%= image_tag @other_user.profile_picture, alt: "Profile Picture", class: "profile-picture mb-2" %>
-    <% end %>
-    <h5 class="user-name mb-1 text-center"><%= @other_user.first_name %></h5>
-    <a href="/video_call" class="video-call-icon">
-      <i class="fas fa-video"></i>
-    </a>
+  <div class="chat-header">
+    <div class="user-info">
+      <% if @other_user.profile_picture %>
+        <%= image_tag @other_user.profile_picture, alt: "Profile Picture", class: "profile-picture" %>
+      <% end %>
+      <h5 class="user-name"><%= @other_user.first_name %></h5>
+      <a href="/video_call" class="video-call-icon">
+        <i class="fas fa-video"></i>
+      </a>
+    </div>
   </div>
-
-  </div>
-</div>
 
   <!-- Messages Section -->
-  <div id="message-box" class="message-box mb-4 p-3 rounded">
+
+  <div id="message-box" class="message-box">
     <% @chatroom.messages.each do |message| %>
-      <div class="message-wrapper <%= 'message-sent' if message.user == current_user %>">
-        <p class="message-bubble">
-          <strong class="message-user"><%= message.user.first_name %>:</strong>
-          <span class="message-text"><%= message.content %></span>
-        </p>
+      <div class="message-wrapper <%= 'message-sent' if message.user == current_user %> <%= 'message-received' if message.user != current_user %>">
+      <p class="message-bubble <%= 'message-sent' if message.user == current_user %> <%= 'message-received' if message.user != current_user %>">
+        <span class="message-text"><%= message.content %></span>
+      </p>
       </div>
     <% end %>
   </div>
 
-  <!-- New Message -->
-  <%= form_with model: [@chatroom, @message], local: true, class: "message-form d-flex align-items-center mb-4" do |form| %>
+  <!-- New Message Form -->
+  <%= form_with model: [@chatroom, @message], local: true, class: "message-form" do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
-    <div class="input-group flex-grow-1 me-2">
+    <div class="input-group">
       <%= form.label :content, "New Message", class: "sr-only" %>
-      <%= form.text_field :content, class: "message-input form-control", placeholder: "Type your message..." %>
+      <%= form.text_field :content, class: "message-input", placeholder: "Type your message..." %>
     </div>
-    <%= form.submit "Send", class: "send-button btn" %>
+    <%= form.submit "Send", class: "send-button" %>
   <% end %>
 </div>
