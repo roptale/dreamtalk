@@ -20,24 +20,35 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    @chatroom = Chatroom.new(chatroom_params)
-    @chatroom.creator = current_user
+    @chatroom = Chatroom.new(creator: current_user, receiver: User.find(params[:user_id]))
 
     if @chatroom.save
       redirect_to @chatroom, notice: "Chatroom created successfully."
     else
-      render :new
+      render "users/show"
     end
   end
 
-  def find_or_create_chatroom
-    user_id = params[:user_id]
+  def token
+    # Get the username from the request
+    @username = params['username']
 
-    chatroom = Chatroom.find_by(creator_id: current_user.id, receiver_id: user_id) ||
-               Chatroom.find_by(creator_id: user_id, receiver_id: current_user.id)
-    chatroom ||= Chatroom.create!(creator_id: current_user.id, receiver_id: user_id)
+    # Handle error if no username was passed into the request
+    json status: 400, error: 'No username in request' if @username.nil?
+    twilio_account_sid = ENV['TWILIO_ACCOUNT_SID']
+    twilio_api_key_sid = ENV['TWILIO_API_KEY_SID']
+    twilio_api_key_secret = ENV['TWILIO_API_KEY_SECRET']
 
-    redirect_to chatroom_path(chatroom)
+    # Create an access token
+    token = Twilio::JWT::AccessToken.new(twilio_account_sid, twilio_api_key_sid, twilio_api_key_secret, [], identity: @username);
+puts token
+    # Create Video grant for your token
+    grant = Twilio::JWT::AccessToken::VideoGrant.new
+    grant.room = 'My Video Room'
+    token.add_grant(grant)
+
+    # Generate and return the token as a JSON response
+    render json: {status: 200, token: token.to_jwt}
   end
 
   private
@@ -46,13 +57,5 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
   end
 
-  def chatroom_params
-    params.require(:chatroom).permit(:receiver_id)
-  end
 
-  def token
-    username = params[:username]
-    token = generate_twilio_token(username)
-    render json: { token: token }
-  end
 end

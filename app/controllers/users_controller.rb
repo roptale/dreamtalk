@@ -24,6 +24,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @chatroom = Chatroom.find_by(creator_id: current_user.id, receiver_id: @user.id) ||
+               Chatroom.find_by(creator_id: @user.id, receiver_id: current_user.id)
   end
 
   def toggle_favorite
