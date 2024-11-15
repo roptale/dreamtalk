@@ -8,16 +8,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-
+  <body>
     <%= yield %>
-
-    <script>
-      window.currentUserFirstName = "<%= current_user ? j(current_user.first_name) : '' %>";
-    </script>
-
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
   </body>
 </html>

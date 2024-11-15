@@ -5,129 +5,129 @@ import "@popperjs/core"
 import "bootstrap"
 
 
-let username = window.currentUserFirstName;
+// let username = window.currentUserFirstName;
 
-const localVideoTrack = document.getElementById('localVideoTrack');
-const login = document.getElementById('login');
-const usernameInput = document.getElementById('username');
-const joinLeaveButton = document.getElementById('joinOrLeaveRoom');
-const localParticipant = document.getElementById('localParticipant');
-const remoteParticipants = document.getElementById('remoteParticipants');
+// const localVideoTrack = document.getElementById('localVideoTrack');
+// const login = document.getElementById('login');
+// const usernameInput = document.getElementById('username');
+// const joinLeaveButton = document.getElementById('joinOrLeaveRoom');
+// const localParticipant = document.getElementById('localParticipant');
+// const remoteParticipants = document.getElementById('remoteParticipants');
 
-let connected = false;
-let room;
+// let connected = false;
+// let room;
 
-async function addLocalVideo() {
-  const videoTrack = await Twilio.Video.createLocalVideoTrack();
-  const trackElement = videoTrack.attach();
-  localVideoTrack.appendChild(trackElement);
-};
+// async function addLocalVideo() {
+//   const videoTrack = await Twilio.Video.createLocalVideoTrack();
+//   const trackElement = videoTrack.attach();
+//   localVideoTrack.appendChild(trackElement);
+// };
+
+// // addLocalVideo();
+
+// async function connectOrDisconnect(event) {
+//   event.preventDefault();
+//   if (!connected) {
+//     const username = usernameInput.value;
+//     joinLeaveButton.disabled = true;
+//     joinLeaveButton.innerHTML = 'Connecting...';
+
+//     try {
+//       await connect(username);
+//     } catch (error) {
+//       console.log(error);
+//       alert('Failed to connect to video room.');
+//       joinLeaveButton.innerHTML = 'Join Video Call';
+//       joinLeaveButton.disabled = false;
+//     }
+//   }
+//   else {
+//     disconnect();
+//   }
+// };
+
+// async function connect(username) {
+//   const response = await fetch('/token', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({'username': username})
+//   });
+
+//   const data = await response.json();
+//   room = await Twilio.Video.connect(data.token, {room: 'my-video-room'});
+
+//   const identityDiv = document.createElement('div');
+//   identityDiv.setAttribute('class', 'identity');
+//   identityDiv.innerHTML = username;
+//   localParticipant.appendChild(identityDiv);
+
+//   room.participants.forEach(participantConnected);
+//   room.on('participantConnected', participantConnected);
+//   room.on('participantDisconnected', participantDisconnected);
+//   connected = true;
+
+//   joinLeaveButton.innerHTML = 'Leave Video Call';
+//   joinLeaveButton.disabled = false;
+//   usernameInput.style.display = 'none';
+// };
+
+// function disconnect() {
+//   room.disconnect();
+
+//   let removeParticipants = remoteParticipants.getElementsByClassName('participant');
+
+//   while (removeParticipants[0]) {
+//     remoteParticipants.removeChild(removeParticipants[0]);
+//   }
+
+//   joinLeaveButton.innerHTML = 'Join Video Call';
+//   connected = false;
+//   usernameInput.style.display = 'inline-block';
+//   localParticipant.removeChild(localParticipant.lastElementChild);
+// };
+
 
 // addLocalVideo();
-
-async function connectOrDisconnect(event) {
-  event.preventDefault();
-  if (!connected) {
-    const username = usernameInput.value;
-    joinLeaveButton.disabled = true;
-    joinLeaveButton.innerHTML = 'Connecting...';
-
-    try {
-      await connect(username);
-    } catch (error) {
-      console.log(error);
-      alert('Failed to connect to video room.');
-      joinLeaveButton.innerHTML = 'Join Video Call';
-      joinLeaveButton.disabled = false;
-    }
-  }
-  else {
-    disconnect();
-  }
-};
-
-async function connect(username) {
-  const response = await fetch('/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({'username': username})
-  });
-
-  const data = await response.json();
-  room = await Twilio.Video.connect(data.token, {room: 'my-video-room'});
-
-  const identityDiv = document.createElement('div');
-  identityDiv.setAttribute('class', 'identity');
-  identityDiv.innerHTML = username;
-  localParticipant.appendChild(identityDiv);
-
-  room.participants.forEach(participantConnected);
-  room.on('participantConnected', participantConnected);
-  room.on('participantDisconnected', participantDisconnected);
-  connected = true;
-
-  joinLeaveButton.innerHTML = 'Leave Video Call';
-  joinLeaveButton.disabled = false;
-  usernameInput.style.display = 'none';
-};
-
-function disconnect() {
-  room.disconnect();
-
-  let removeParticipants = remoteParticipants.getElementsByClassName('participant');
-
-  while (removeParticipants[0]) {
-    remoteParticipants.removeChild(removeParticipants[0]);
-  }
-
-  joinLeaveButton.innerHTML = 'Join Video Call';
-  connected = false;
-  usernameInput.style.display = 'inline-block';
-  localParticipant.removeChild(localParticipant.lastElementChild);
-};
+// login.addEventListener('submit', connectOrDisconnect);
 
 
-addLocalVideo();
-login.addEventListener('submit', connectOrDisconnect);
+// function participantConnected(participant) {
+//   const participantDiv = document.createElement('div');
+//   participantDiv.setAttribute('id', participant.sid);
+//   participantDiv.setAttribute('class', 'participant');
 
+//   const tracksDiv = document.createElement('div');
+//   participantDiv.appendChild(tracksDiv);
 
-function participantConnected(participant) {
-  const participantDiv = document.createElement('div');
-  participantDiv.setAttribute('id', participant.sid);
-  participantDiv.setAttribute('class', 'participant');
+//   const identityDiv = document.createElement('div');
+//   identityDiv.setAttribute('class', 'identity');
+//   identityDiv.innerHTML = participant.identity;
+//   participantDiv.appendChild(identityDiv);
 
-  const tracksDiv = document.createElement('div');
-  participantDiv.appendChild(tracksDiv);
+//   remoteParticipants.appendChild(participantDiv);
 
-  const identityDiv = document.createElement('div');
-  identityDiv.setAttribute('class', 'identity');
-  identityDiv.innerHTML = participant.identity;
-  participantDiv.appendChild(identityDiv);
+//   participant.tracks.forEach(publication => {
+//     if (publication.isSubscribed) {
+//       trackSubscribed(tracksDiv, publication.track);
+//     }
+//   });
+//   participant.on('trackSubscribed', track => trackSubscribed(tracksDiv, track));
+//   participant.on('trackUnsubscribed', trackUnsubscribed);
+// };
 
-  remoteParticipants.appendChild(participantDiv);
+// function participantDisconnected(participant) {
+//   document.getElementById(participant.sid).remove();
+// };
 
-  participant.tracks.forEach(publication => {
-    if (publication.isSubscribed) {
-      trackSubscribed(tracksDiv, publication.track);
-    }
-  });
-  participant.on('trackSubscribed', track => trackSubscribed(tracksDiv, track));
-  participant.on('trackUnsubscribed', trackUnsubscribed);
-};
+// function trackSubscribed(div, track) {
+//   const trackElement = track.attach();
+//   div.appendChild(trackElement);
+// };
 
-function participantDisconnected(participant) {
-  document.getElementById(participant.sid).remove();
-};
-
-function trackSubscribed(div, track) {
-  const trackElement = track.attach();
-  div.appendChild(trackElement);
-};
-
-function trackUnsubscribed(track) {
-  track.detach().forEach(element => {
-    element.remove()
-  });
-};
+// function trackUnsubscribed(track) {
+//   track.detach().forEach(element => {
+//     element.remove()
+//   });
+// };

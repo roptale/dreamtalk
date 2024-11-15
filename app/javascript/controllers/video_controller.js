@@ -1,12 +1,14 @@
-import { Controller } from "stimulus"
-import TwilioVideo from "twilio-video"
+import { Controller } from "@hotwired/stimulus"
+// import Video from "twilio-video"
+// import TwilioVideo from "https://sdk.twilio.com/js/video/releases/2.25.0/twilio-video.min.js";
+// export const connect = TwilioVideo.connect;
+// const Video = require('twilio-video');
 
 export default class extends Controller {
   static targets = ["joinButton", "disconnectButton", "localVideoTrack", "remoteParticipants"]
-
   connect() {
-    this.room = null; // Variable to store the video room session
-  }
+    this.room = null;
+  };
 
   async joinOrLeaveRoom(event) {
     event.preventDefault();
@@ -16,20 +18,33 @@ export default class extends Controller {
       this.disconnectCall();
     } else {
       // Otherwise, join the room
-      const username = document.getElementById("username").value;
+      // const username = document.getElementById("username").value;
+      const username = "Lise"
       const token = await this.fetchToken(username);
-
-      TwilioVideo.connect(token, { video: true, audio: true }).then(room => {
+      Twilio.Video.connect(token, { video: "myroom" }).then(room => {
+      console.log(room)
         this.room = room;
         this.setupRoomEventListeners(room);
         this.showDisconnectButton(); // Show Disconnect button
         this.attachLocalVideo(room);
-      });
+      }).catch(error => console.log(error) )
+      // Video.connect(token, {
+      //   audio: true,
+      //   name: 'my-room-name',
+      //   video: { width: 640 }
+      // }).then(room => {
+      //   console.log(`Connected to Room: ${room.name}`);
+      // });
     }
   }
 
   async fetchToken(username) {
-    const response = await fetch(`/chatrooms/token?username=${username}`);
+    const csrfToken = document.querySelector("[name='csrf-token']").content
+    const response = await fetch(`/token?username=${username}`, {method: "POST",
+      headers: {
+        "X-CSRF-Token": csrfToken,
+        "Content-Type": "application/json"
+      }});
     const data = await response.json();
     return data.token;
   }

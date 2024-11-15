@@ -13,17 +13,18 @@ Rails.application.routes.draw do
   get "profile", to: "profile#edit"
   post "update_profile", to: "profile#update"
 
-  get 'messages/create'
-  get 'chatrooms/index'
-  get 'chatrooms/show'
+  # get 'messages/create'
+  # get 'chatrooms/index'
+  # get 'chatrooms/show'
 
   get '/favorites_profiles', to: 'profile#index', as: 'favorites_profiles'
   post '/token', to: 'chatrooms#token'
+
   resources :users do
     post 'toggle_favorite', on: :member
-    post 'find_or_create_chatroom', on: :member
+    resources :chatrooms, only: [:create]
   end
-  resources :chatrooms, only: [:index, :show, :new, :create] do
+  resources :chatrooms, only: [:index, :show, :new] do
     resources :messages, only: :create
   end
 end
