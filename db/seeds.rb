@@ -16,9 +16,9 @@ User.destroy_all
 Language.destroy_all
 
 puts "Creating languages..."
-french = Language.create(name: "French")
-german = Language.create(name: "German")
-english = Language.create(name: "English")
+french = Language.create(name: "French", lang_code: "fr")
+german = Language.create(name: "German", lang_code: "de")
+english = Language.create(name: "English", lang_code: "en")
 
 puts "Creating users..."
 varsik = User.create(first_name: "Varsenik", city: "Paris", age: 28, email: "varsik@gmail.com", password: "123456", profile_picture: "https://randomuser.me/api/portraits/women/67.jpg")
