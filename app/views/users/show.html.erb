@@ -49,9 +49,8 @@
     </div>
     <% if @user == current_user %>
       <%= link_to "Edit Profile", profile_path, class: "btn-chat btn-primary" %>
-    <% end %>
 
-    <% if @user != current_user && @chatroom.present? %>
+    <% elsif @user != current_user && @chatroom.present? %>
       <%= link_to "Conversation with #{ @user.first_name }", chatroom_path(@chatroom), class: "btn-chat" %>
     <% else %>
        <%= button_to "Chat with #{ @user.first_name }", user_chatrooms_path(@user), method: :post, class: "btn-chat btn-secondary" %>
