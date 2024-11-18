@@ -1,5 +1,6 @@
 /* app/assets/stylesheets/pages/_profile.scss */
 
+
 .container-show {
   width: 100%;
   // background: linear-gradient(135deg, var(--secondary), var(--text));
@@ -79,26 +80,18 @@
     animation: twinkle 8s infinite alternate;
 }
   .btn-chat {
-    display: block;
-    margin-top: 20px;
-    background-color: #b75195;
-    color: #fff;
-    width: fit-content;
-    margin: 0 auto;
-    padding: 12px 40px;
-    border-radius: 30px;
-    border: none;
+    font-size: 0.95rem;
+    border: 2px solid #b75195;
+    border-radius: 8px;
+    color: #b75195;
+    padding: 0.5rem 1.5rem;
+    background-color: #F4E5EF;
     text-decoration: none;
-    align-self: center;
-    transition: background-color 0.3s, box-shadow 0.3s;
-
-    @media screen and (max-width: 574px) {
-      width: 100%;
-    }
 
     &:hover {
-      background-color: #9b4d87;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      background-color: #b75195;
+      color: #F4E5EF;
+      transition: all 0.3s ease-in-out;
     }
   }
 
