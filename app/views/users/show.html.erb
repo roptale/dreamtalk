@@ -1,6 +1,7 @@
-<div class="container-show">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
 
-  <div class="profil">
+<div class="container-show">
+  <div class="inner-container">
     <% unless current_user == @user %>
       <div class="icon">
         <%= link_to '#', class: "favorite-star #{'active' if @current_user.favorited?(@user)}", data: { user_id: @user.id, turbolinks: false, controller: "favorite", action: "click->favorite#favoris", favorite_user_id_value: @user.id } do %>
@@ -8,42 +9,42 @@
         <% end %>
       </div>
     <% end %>
-    <div class="avatar">
+
+    <h2><%= @user.first_name %></h2>
+
+    <div class="city"><i class="fa-solid fa-location-dot"></i> <%= @user.city %></div>
+
+    <div class="profile-avatar">
       <% if @user.profile_picture %>
         <%= image_tag @user.profile_picture, alt: "Profile Picture" %>
       <% end %>
     </div>
-    <h2><%= @user.first_name %></h2>
+
+    <h3>About Me</h3>
     <p class="card-text">
-        <% if @user.description.nil? || @user.description.empty? %>
-          No description yet
-        <% else %>
-          <%= @user.description %>
-    <% end %>
+      <% if @user.description.nil? || @user.description.empty? %>
+        No description yet
+      <% else %>
+        <%= @user.description %>
+      <% end %>
     </p>
 
     <div class="langues">
-      <div class="test">
+      <div class="column">
         <h5>Spoken</h5>
-            <ul>
-            <% @user.user_languages.select { |ul| ul.spoken }.each do |ul| %>
-              <li><%= ul.language.name %></li>
-            <% end %>
-          </ul>
+        <ul>
+          <% @user.user_languages.select { |lang| lang.spoken }.each do |lang| %>
+            <li><span class="fi fi-<%= lang.language.icon_code %>"></span><%= lang.language.name %></li>
+          <% end %>
+        </ul>
       </div>
-      <div class="test">
+      <div class="column">
         <h5>Wanted</h5>
-          <ul>
-            <% @user.user_languages.select { |ul| ul.wanted }.each do |ul| %>
-              <li><%= ul.language.name %></li>
-            <% end %>
-          </ul>
-      </div>
-      <div class="test">
-        <h5>Location</h5>
-          <ul>
-            <%= @user.city %>
-          </ul>
+        <ul>
+          <% @user.user_languages.select { |lang| lang.wanted }.each do |lang| %>
+            <li><span class="fi fi-<%= lang.language.icon_code %>"></span><%= lang.language.name %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
     <% if @user == current_user %>
@@ -51,10 +52,9 @@
     <% end %>
 
     <% if @user != current_user && @chatroom.present? %>
-      <%= link_to "Conversation with #{ @user.first_name }", chatroom_path(@chatroom) %>
-     <% else %>
-      <%= button_to "Chat with #{ @user.first_name }", user_chatrooms_path(@user), method: :post, class: "btn-chat btn-secondary" %>
+      <%= link_to "Conversation with #{ @user.first_name }", chatroom_path(@chatroom), class: "btn-chat" %>
+    <% else %>
+       <%= button_to "Chat with #{ @user.first_name }", user_chatrooms_path(@user), method: :post, class: "btn-chat btn-secondary" %>
     <% end %>
   </div>
-
 </div>
