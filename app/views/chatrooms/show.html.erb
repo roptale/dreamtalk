@@ -2,8 +2,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <div class="chat-container mt-5">
-
-<!-- Chat Header with User Info and Video Call Icon -->
+<%= link_to chatrooms_path, class: "back-button" do %>
+  <i class="fas fa-chevron-left"></i>
+<% end %>
 <div class="chat-header" data-controller="video">
   <div class="user-info">
     <% if @other_user.profile_picture %>
@@ -16,8 +17,6 @@
   </div>
 </div>
 
-  <!-- Messages Section -->
-
   <div id="message-box" class="message-box">
     <% @chatroom.messages.each do |message| %>
       <div class="message-wrapper <%= 'message-sent' if message.user == current_user %> <%= 'message-received' if message.user != current_user %>">
@@ -28,7 +27,6 @@
     <% end %>
   </div>
 
-  <!-- New Message Form -->
   <%= form_with model: [@chatroom, @message], local: true, class: "message-form" do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <div class="input-group">
