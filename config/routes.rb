@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # get 'chatrooms/show'
 
   get '/favorites_profiles', to: 'profile#index', as: 'favorites_profiles'
-  post '/token', to: 'chatrooms#token'
+
 
   resources :users do
     post 'toggle_favorite', on: :member
@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   end
   resources :chatrooms, only: [:index, :show, :new] do
     resources :messages, only: :create
+    post '/token', to: 'chatrooms#token', on: :member
   end
 end
