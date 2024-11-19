@@ -1,14 +1,18 @@
-<div class="chat-container">
+<div class="chat-container mt-5"
+     data-controller="video"
+     data-video-chatroom-id-value=<%= @chatroom.id %>
+     data-video-token-url-value=<%= token_chatroom_path(@chatroom) %>
+     data-video-username-value=<%= current_user.first_name %>>
 <%= link_to chatrooms_path, class: "back-button" do %>
   <i class="fas fa-chevron-left"></i>
 <% end %>
-<div class="chat-header" data-controller="video">
+<div class="chat-header">
   <div class="user-info">
     <% if @other_user.profile_picture %>
       <%= image_tag @other_user.profile_picture, alt: "Profile Picture", class: "profile-picture" %>
     <% end %>
     <h5 class="user-name"><%= @other_user.first_name %></h5>
-    <a href="#" class="video-call-icon" data-action="video#joinOrLeaveRoom">
+    <a href="#" class="video-call-icon" data-action="video#joinRoom">
       <i class="fas fa-video"></i>
     </a>
   </div>
@@ -32,6 +36,11 @@
     </div>
     <%= form.submit "Send", class: "send-button" %>
   <% end %>
+
+  <div class="video-container d-none" data-video-target="videoContainer">
+    <i class="fa-solid fa-x video-quit" data-action="click->video#disconnectVideo"></i>
+  </div>
+
 </div>
 
 <script src="https://sdk.twilio.com/js/video/releases/2.22.1/twilio-video.min.js"></script>

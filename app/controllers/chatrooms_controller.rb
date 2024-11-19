@@ -41,7 +41,7 @@ class ChatroomsController < ApplicationController
 
     # Create an access token
     token = Twilio::JWT::AccessToken.new(twilio_account_sid, twilio_api_key_sid, twilio_api_key_secret, [], identity: @username);
-puts token
+
     # Create Video grant for your token
     grant = Twilio::JWT::AccessToken::VideoGrant.new
     grant.room = 'My Video Room'
