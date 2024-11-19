@@ -138,11 +138,11 @@
     transition: color 0.3s;
 
     &:hover {
-      color: var(--secondary);
+      color: var(--primary);
     }
 
     &.active {
-      color: var(--secondary);
+      color: var(--primary);
     }
   }
 }
