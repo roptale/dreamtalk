@@ -23,7 +23,7 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.new(creator: current_user, receiver: User.find(params[:user_id]))
 
     if @chatroom.save
-      redirect_to @chatroom, notice: "Chatroom created successfully."
+      redirect_to @chatroom
     else
       render "users/show"
     end

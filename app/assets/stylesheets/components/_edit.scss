@@ -3,7 +3,7 @@
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   box-sizing: border-box;
 
   &:focus {
@@ -11,6 +11,10 @@
     outline: none;
     box-shadow: 0 0 8px #b75195;
   }
+}
+
+body {
+  background-color: #F4E5EF;
 }
 
 .profile-container {
@@ -58,19 +62,17 @@
   }
 
   .btn-success {
-    padding: 10px 20px;
-    color: #d6c79c;
-    background-color: #b75195;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    font-size: 0.95rem;
+    border: 2px solid #b75195;
+    border-radius: 8px;
+    color: #b75195;
+    padding: 0.5rem 1.5rem;
+    background-color: #F4E5EF;
 
     &:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: #b75195;
+      color: #F4E5EF;
+      transition: all 0.3s ease-in-out;
     }
   }
 
@@ -81,7 +83,7 @@
     .essais {
       border: 2px solid #b75195;
       color: white;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s, border-color 0.3s;

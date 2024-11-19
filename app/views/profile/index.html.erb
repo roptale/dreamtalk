@@ -1,4 +1,8 @@
 <div class="container mt-5">
+
+  <h1 class="title">Your favorite Buddies</h1>
+
+
   <div class="buddies-container">
     <% @favorites.each do |user| %>
       <div class="buddy-card" onclick="redirectToUserProfile(<%= user.id %>)">

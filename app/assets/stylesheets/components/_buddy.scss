@@ -4,6 +4,10 @@
   justify-content: space-between;
 }
 
+body {
+  background-color: rgba(183, 81, 149, 0.15);
+}
+
 .buddy-card {
   position: relative;
   display: flex;
@@ -55,7 +59,7 @@
     background-color: bisque;
     padding: 8px 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
 
@@ -74,5 +78,5 @@
 }
 
 .title {
-  padding-left: 10px;
+  text-align: center;
 }
