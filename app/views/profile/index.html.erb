@@ -11,8 +11,8 @@
           <p>Location: <%= user.city %></p>
           <% spoken_languages = user.user_languages.select { |ul| ul.spoken }.map { |ul| ul.language.name } %>
           <% wanted_languages = user.user_languages.select { |ul| ul.wanted }.map { |ul| ul.language.name } %>
-          <p>Speak: <%= spoken_languages.join(', ') %></p>
-          <p>Want to learn: <%= wanted_languages.join(', ') %></p>
+          <p>Speaks: <%= spoken_languages.join(', ') %></p>
+          <p>Wants to learn: <%= wanted_languages.join(', ') %></p>
           <%= link_to '#', class: "favorite-star #{'active' if current_user.favorited?(user)}", data: { user_id: user.id, turbolinks: false, controller: "favorite", action: "click->favorite#favoris", favorite_user_id_value: user.id } do %>
             <i class="fa fa-star"></i>
           <% end %>
