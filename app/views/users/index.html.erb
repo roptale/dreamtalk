@@ -31,11 +31,14 @@
       <div class="buddy-card" onclick="redirectToUserProfile(<%= user.id %>)">
         <div class="buddy-card-info">
           <h2><%= user.first_name %></h2>
-          <p><span class="label"><i class="fa-solid fa-location-dot"></i> <%= user.city %></span></p>
-          <% spoken_languages = user.user_languages.select { |ul| ul.spoken }.map { |ul| ul.language.name } %>
-          <% wanted_languages = user.user_languages.select { |ul| ul.wanted }.map { |ul| ul.language.name } %>
-          <p><span class="label"><i class="fa-solid fa-comment"></i> <%= spoken_languages.join(', ') %></span></p>
-          <p><span class="label"><i class="fa-regular fa-comment"></i> <%= wanted_languages.join(', ') %></span></p>
+          <div class="buddies-info">
+            <p><i class="fa-solid fa-location-dot"></i> <%= user.city %></p>
+            <% spoken_languages = user.user_languages.select { |ul| ul.spoken }.map { |ul| ul.language.name } %>
+            <% wanted_languages = user.user_languages.select { |ul| ul.wanted }.map { |ul| ul.language.name } %>
+            <p><i class="fa-solid fa-comment"></i> <%= spoken_languages.join(', ') %></p>
+            <p>Wants to learn: <%= wanted_languages.join(', ') %></p>
+
+          </div>
           <%= link_to '#', class: "favorite-star #{'active' if current_user.favorited?(user)}", data: { user_id: user.id, turbolinks: false, controller: "favorite", action: "click->favorite#favoris", favorite_user_id_value: user.id } do %>
             <i class="fa fa-star"></i>
           <% end %>

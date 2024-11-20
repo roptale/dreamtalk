@@ -54,6 +54,12 @@ body {
     font-size: 1.5em;
   }
 
+  .buddies-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   p {
     display: inline-block;
     margin: 5px 0;
@@ -64,14 +70,6 @@ body {
     padding: 8px;
     background-color: #F4F2EB;
     margin: 4px;
-
-    .label {
-      font-size: 1em;
-      color: #333;
-      font-weight: 400;
-
-
-    }
   }
 
   .view-button {
