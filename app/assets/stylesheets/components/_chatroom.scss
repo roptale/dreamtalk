@@ -1,5 +1,5 @@
 $color-text: #130810;
-$color-bg: #fcf7fa;
+$color-bg: #F4E5EF;
 $color-primary: #b75195; // Sent message color
 $color-secondary: #d6c79c; // Received message color
 $color-accent: #b8ca7f;
@@ -36,7 +36,7 @@ body {
 
 .chat-container {
   color: $color-text;
-  background-color: $color-bg;
+  background-color: #F4E5EF;
   padding: 10px 15px;
   max-width: 100%;
   min-height: 100vh;
