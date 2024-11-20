@@ -55,14 +55,22 @@ body {
   }
 
   p {
+    display: inline-block;
     margin: 5px 0;
     font-size: 1.1em;
     font-weight: 600;
+    border: 1px solid #D6C79C;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: #F4F2EB;
+    margin: 4px;
 
     .label {
       font-size: 1em;
       color: #333;
       font-weight: 400;
+
+
     }
   }
 
