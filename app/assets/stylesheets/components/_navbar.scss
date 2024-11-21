@@ -54,6 +54,13 @@
 
   i {
     color: var(--accent);
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    i {
+      color: #B75195;
+    }
   }
 }
 
@@ -73,10 +80,6 @@
       display: none;
     }
   }
-}
-
-.navbar-lewagon .nav-link:hover {
-  color: #B75195;
 }
 
 /* Avatar */
