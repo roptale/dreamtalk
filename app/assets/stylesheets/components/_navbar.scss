@@ -1,7 +1,14 @@
-/* Barre de navigation */
+$color-text: #130810;
+$color-bg: #F4E5EF;
+$color-primary: #b75195;
+$color-secondary: #d6c79c;
+$color-accent: #b8ca7f;
+
+
+
 .navbar-lewagon {
-  background-color: #f8f9fa;
-  padding: 10px 20px;
+  background-color: lighten($color-accent, 20%);
+  padding: 10px 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
   .avatar {
@@ -47,7 +54,7 @@
 
 /* Liens de navigation */
 .navbar-lewagon .nav-link {
-  color: #333;
+  color: $color-text;
   font-weight: 500;
   align-items: center;
 }
@@ -71,7 +78,7 @@
 }
 
 .navbar-lewagon .nav-link:hover {
-  color: #007bff;
+  color: darken($color-secondary, 20%);
 }
 
 /* Avatar */
@@ -86,19 +93,19 @@
 .navbar-lewagon .dropdown-menu {
   right: 0; /* Aligne le menu à droite */
   left: auto; /* Annule le positionnement à gauche par défaut */
-  background-color: #ffffff; /* Fond opaque */
+  background-color: $color-bg; /* Fond opaque */
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   padding: 10px;
 }
 
 .navbar-lewagon .dropdown-item {
-  color: #333;
+  color: $color-primary;
 }
 
 .navbar-lewagon .dropdown-item:hover {
-  background-color: #f1f1f1;
-  color: #007bff;
+  background-color: $color-bg;
+  color: $color-accent;
 }
 
 /* Bouton de navigation pour mobile */
@@ -107,11 +114,11 @@
 }
 
 .navbar-toggler-icon {
-  color: #007bff;
+  color: $color-accent;
 }
 
 
 .rounded-logo {
   border-radius: 30%;
-  border: 0.5px solid #f7f7f7;
+  border: 0.5px solid $color-accent;
 }

@@ -8,6 +8,7 @@
       <div class="buddy-card" onclick="redirectToUserProfile(<%= user.id %>)">
         <div class="buddy-card-info">
           <div class="buddies-info">
+            <h2><%= user.first_name %></h2>
             <p><i class="fa-solid fa-location-dot"></i> <%= user.city %></p>
             <% spoken_languages = user.user_languages.select { |ul| ul.spoken }.map { |ul| ul.language.name } %>
             <% wanted_languages = user.user_languages.select { |ul| ul.wanted }.map { |ul| ul.language.name } %>
