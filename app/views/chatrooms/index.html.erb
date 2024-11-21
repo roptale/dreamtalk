@@ -7,17 +7,18 @@
       <div class="d-flex align-items-center">
         <% other_user = (chatroom.creator == current_user) ? chatroom.receiver : chatroom.creator %>
 
-        <% if other_user.profile_picture %>
-          <%= image_tag other_user.profile_picture, alt: "Profile Picture", class: "profile-picture mr-6" %>
-        <% else %>
-          <%= image_tag "default_profile_picture.png", alt: "Default Profile Picture", class: "profile-picture mr-6" %>
-        <% end %>
+          <% if other_user.profile_picture %>
+            <%= image_tag other_user.profile_picture, alt: "Profile Picture", class: "profile-picture mr-6" %>
+          <% else %>
+            <%= image_tag "default_profile_picture.png", alt: "Default Profile Picture", class: "profile-picture mr-6" %>
+          <% end %>
 
-        <h5 class="card-title font-weight-bold mb-0">
-          <%= other_user.first_name %>
-        </h5>
+          <h5 class="card-title font-weight-bold mb-0">
+            <%= other_user.first_name %>
+          </h5>
+        </div>
+        <%= link_to "Open Chat", chatroom_path(chatroom), class: "btn btn-outline-primary btn-lg" %>
       </div>
-      <%= link_to "Open Chat", chatroom_path(chatroom), class: "btn btn-outline-primary btn-lg" %>
     </div>
   </div>
 <% end %>
