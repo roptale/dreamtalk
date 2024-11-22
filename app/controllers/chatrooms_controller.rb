@@ -31,7 +31,7 @@ class ChatroomsController < ApplicationController
 
   def token
     # Get the username from the request
-    @username = params['username']
+    @username = params[:username]
 
     # Handle error if no username was passed into the request
     json status: 400, error: 'No username in request' if @username.nil?
